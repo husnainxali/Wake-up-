@@ -4,7 +4,9 @@ An alarm clock based on the retro brick phone customized for your own prefrence 
 
 ## Description
 
-This is a custom alarm clock that I made while I was scrolling Pinterest I saw an old 90s brick phone and I got the idea to make an alarm clock for my room that looks like an brick phone although its not as polished as my imagination but as a beginner it has been a great project for me 
+This is a custom alarm clock that I made.
+While I was scrolling Pinterest I saw an old 90s brick phone and I got the idea to make an alarm clock for my room that looks like an brick phone although its not as polished as my imagination but as a beginner it has been a great project for me.
+I learned a lot from this project and i am looking forward to make it better. 
 
 ### Screenshots
 - Schematics
