@@ -15,6 +15,7 @@ This is a custom alarm clock that I made while I was scrolling Pinterest I saw a
 - Install ESP32 board on Arduino IDE
 - Download Firmware file
 - Open *[alarm_firmware](Firmware/alarm_firmware.ino)*
+- Flash the firmware to ESP32 C3
 
 ### Dependencies
 
