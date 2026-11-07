@@ -18,8 +18,8 @@ This is a custom alarm clock that I made while I was scrolling Pinterest I saw a
 
 - Case
 
-<img src="Render/case_side.png" width = "300">
-<img src="Render/casetop.png">
+<img src="Render/case_side.png" width = "400">
+<img src="Render/casetop.png" width = "400">
 
 ## Getting Started
 - Download PCB Files
@@ -43,4 +43,4 @@ This is a custom alarm clock that I made while I was scrolling Pinterest I saw a
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md 
+This project is licensed under the MIT License - see the *[LICENSE](LICENSE)* 
