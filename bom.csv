@@ -1,0 +1,12 @@
+Item,Reference,Description,Quantity,Notes
+Microcontroller,U1,Seeed Studio XIAO ESP32-C3,1,Main controller with WiFi
+Display,-,8-pin SPI TFT display module (ST7789 1.14" 135x240),1,Plugs into J1; confirm exact model
+Mechanical switch,SW1-SW6,MX-style mechanical keyboard switch,6,Soldered to PCB
+Keycap,-,MX-style keycap,6,One per switch
+Diode,D1-D6,1N4148 through-hole diode,6,One per switch for the key matrix
+Buzzer,BZ1,Piezo buzzer (through-hole),1,Connected to D3 and GND; confirm passive or active
+Pin header,J1,1x08 2.54mm header (female socket),1,Display connection
+Screw,H1-H4,M3 screw,4,PCB mounting holes; confirm length used with your case
+PCB,-,Custom PCB (KiCad),1,Order from your PCB manufacturer
+Case,-,3D printed brick phone case (Fusion 360),1,Printed in PLA or similar
+USB-C cable,-,USB-C cable for power and flashing,1,Not included on the PCB
