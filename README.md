@@ -48,6 +48,10 @@ I learned a lot from this project and i am looking forward to make it better.
 - Open *[alarm_Firmware.ino](Firmware/alarm_Firmware.ino)*
 - Flash the firmware to ESP32 C3
 
+### How it works
+
+The XIAO ESP32-C3 connects to WiFi and downloads the time. The six buttons are wired in a matrix, and the firmware reads them to change the alarm hour and minute. Before flashing, open the firmware file and type in your own WiFi name and password.
+
 ## License
 
 This project is licensed under the MIT License - see the *[LICENSE](LICENSE)* 
