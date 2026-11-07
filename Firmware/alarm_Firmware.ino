@@ -1,20 +1,13 @@
-// Simple alarm clock - XIAO ESP32-C3
-// Shows the time (from WiFi), has one alarm, beeps when it's time.
-//
-// KEYS:  SW1 = alarm hour +      SW2 = alarm minute +
-//        SW5 = alarm on/off      SW6 = stop the beeping
-
 #include <WiFi.h>
 #include <SPI.h>
 #include <time.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7789.h>
 
-// ---------- 1. YOUR SETTINGS ----------
+//wifi config
 const char* WIFI_NAME = "YOUR_WIFI_NAME";      // must be 2.4 GHz
 const char* WIFI_PASS = "YOUR_WIFI_PASSWORD";
-
-// ---------- 2. PINS (from your schematic) ----------
+//pin config
 #define TFT_CS   D6
 #define TFT_DC   D5
 #define TFT_RST  D8
@@ -24,7 +17,7 @@ const char* WIFI_PASS = "YOUR_WIFI_PASSWORD";
 #define BUZZER   D3
 
 const int rowPins[2] = {D0, D1};   // R1, R2
-const int colPins[2] = {D2, D4};   // C1, C3  (C2 is skipped: the buzzer uses that pin)
+const int colPins[2] = {D2, D4};   // C1, C3 
 
 // Which key is at [row][column]:  R1/C1 = SW1, R1/C3 = SW5, R2/C1 = SW2, R2/C3 = SW6
 const int keyMap[2][2] = { {1, 5},
@@ -32,7 +25,7 @@ const int keyMap[2][2] = { {1, 5},
 
 Adafruit_ST7789 tft(&SPI, TFT_CS, TFT_DC, TFT_RST);
 
-// ---------- 3. VARIABLES ----------
+// Variables
 int  alarmHour = 7;
 int  alarmMin  = 0;
 bool alarmOn   = false;
@@ -42,10 +35,8 @@ int  lastKey = 0;
 int  lastSecond = -1;
 bool beepState = false;
 unsigned long lastBeep = 0;
+unsigned long ringStart = 0;
 
-// ---------- 4. READ THE KEYS ----------
-// Pull one column LOW at a time. If a key is pressed, its row reads LOW.
-// Returns the key number (1, 2, 5 or 6), or 0 if nothing is pressed.
 int readKey() {
   for (int c = 0; c < 2; c++) {
     pinMode(colPins[c], OUTPUT);
@@ -62,7 +53,7 @@ int readKey() {
   return 0;
 }
 
-// ---------- 5. DRAW ON THE SCREEN ----------
+// Draw on screen
 void drawTime(struct tm t) {
   char text[16];
   snprintf(text, sizeof(text), "%02d:%02d:%02d", t.tm_hour, t.tm_min, t.tm_sec);
@@ -79,7 +70,7 @@ void drawAlarm() {
   tft.print(text);
 }
 
-// ---------- 6. WHAT EACH KEY DOES ----------
+// Keys purpose
 void handleKey(int key) {
   if (key == 1) alarmHour = (alarmHour + 1) % 24;
   if (key == 2) alarmMin  = (alarmMin + 1) % 60;
@@ -88,7 +79,7 @@ void handleKey(int key) {
   drawAlarm();
 }
 
-// ---------- 7. SETUP (runs once) ----------
+// Setup
 void setup() {
   // keys
   pinMode(rowPins[0], INPUT_PULLUP);
@@ -120,7 +111,7 @@ void setup() {
   drawAlarm();
 }
 
-// ---------- 8. LOOP (runs forever) ----------
+// loop
 void loop() {
   // keys: act only once when a key goes down
   int key = readKey();
@@ -136,9 +127,9 @@ void loop() {
       lastSecond = t.tm_sec;
       drawTime(t);
     }
-    if (alarmOn && !ringing && t.tm_hour == alarmHour && t.tm_min == alarmMin && t.tm_sec == 0) {
-      ringing = true;
-    }
+ if (alarmOn && !ringing && t.tm_hour == alarmHour && t.tm_min == alarmMin && t.tm_sec == 0) {
+  ringing = true;
+  ringStart = millis();
   }
 
   // beeping: on for half a second, off for half a second
@@ -149,5 +140,9 @@ void loop() {
     else           noTone(BUZZER);
   }
 
-  delay(20);   // also works as key debounce
+  if (ringing && millis() - ringStart > 120000) {
+  ringing = false;
+  noTone(BUZZER);
+}
+    delay(20);   // also works as key debounce
 }
