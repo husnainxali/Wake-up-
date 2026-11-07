@@ -38,7 +38,7 @@ This is a custom alarm clock that I made while I was scrolling Pinterest I saw a
 ### Executing program
 
 - Open Arduino IDE
-- Open *[Firmware/alarm_Firmware.ino](alarm_Firmware.ino)*
+- Open *[alarm_Firmware.ino](Firmware/alarm_Firmware.ino)*
 - Flash the firmware to ESP32 C3
 
 ## License
