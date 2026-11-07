@@ -1,6 +1,6 @@
 Item,Reference,Description,Quantity,Notes
 Microcontroller,U1,Seeed Studio XIAO ESP32-C3,1,Main controller with WiFi
-Display,-,8-pin SPI TFT display module (ST7789 1.14" 135x240),1,Plugs into J1; confirm exact model
+Display,-,8-pin SPI TFT display module (ST7789 1.14" 135x240),1,Plugs into J1, confirm exact model
 Mechanical switch,SW1-SW6,MX-style mechanical keyboard switch,6,Soldered to PCB
 Keycap,-,MX-style keycap,6,One per switch
 Diode,D1-D6,1N4148 through-hole diode,6,One per switch for the key matrix
